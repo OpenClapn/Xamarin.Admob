@@ -1,0 +1,61 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks></TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid90</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid90</TargetFrameworks>
+
+    <DesignTimeBuild>false</DesignTimeBuild>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+    <LangVersion>latest</LangVersion>
+    <DebugType>portable</DebugType>
+
+    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <Authors>Maxime Frappat</Authors>
+    <Company>Clapn</Company>
+    <Copyright>Copyright 2020</Copyright>
+    <PackageProjectUrl>https://github.com/OpenClapn/Xamarin.Admob</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OpenClapn/Xamarin.Admob</RepositoryUrl>
+    <PackageTags>xamarin, ios, android, xamarin.forms, admob, reward, interstitial, google, google ads, ads</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DebugType>pdbonly</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.shared.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="**\*.android.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="**\*.ios.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
+    <PackageReference Include="Xamarin.Google.iOS.SignIn" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
+    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite" Version="71.1720.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
+    <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="7.53.1" />
+  </ItemGroup>
+
+</Project>
