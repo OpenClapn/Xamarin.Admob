@@ -19,6 +19,14 @@
     <PackageProjectUrl>https://github.com/OpenClapn/Xamarin.Admob</PackageProjectUrl>
     <RepositoryUrl>https://github.com/OpenClapn/Xamarin.Admob</RepositoryUrl>
     <PackageTags>xamarin, ios, android, xamarin.forms, admob, reward, interstitial, google, google ads, ads</PackageTags>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes># 1.0.1
+
+- Set custom data on RewardedAd when calling ShowRewardedVideo
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -56,6 +64,14 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
     <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
     <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="7.53.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -17,8 +17,7 @@ namespace Clapn.Xamarin.Admob
         private InterstitialAd _interstitialAd;
 
         private IRewardedVideoAd _rewardedAd;
-        private RewardedAdOptions _rewardedAdOptions;
-        private readonly RewardedAdOptionsEqualityComparer _rewardedAdOptionsEqualityComparer = new RewardedAdOptionsEqualityComparer();
+        private string _rewardedAdUnit;
 
         public event EventHandler<RewardedAdEventArgs> OnRewarded;
         public event EventHandler OnRewardedAdClosed;
@@ -126,16 +125,16 @@ namespace Clapn.Xamarin.Admob
             return _rewardedAd != null && _rewardedAd.IsLoaded;
         }
 
-        public void LoadRewardedVideo(RewardedAdOptions options)
+        public void LoadRewardedVideo(string adUnit)
         {
             if (_rewardedAd == null)
             {
                 CreateRewardedAd();
             }
 
-            if (!_rewardedAd.IsLoaded && !_rewardedAdOptionsEqualityComparer.Equals(_rewardedAdOptions, options))
+            if (!_rewardedAd.IsLoaded || _rewardedAdUnit != adUnit)
             {
-                _rewardedAdOptions = options;
+                _rewardedAdUnit = adUnit;
                 var requestBuilder = new AdRequest.Builder();
 
                 if (ClapnAdmob.Instance.TestDevices != null)
@@ -146,10 +145,7 @@ namespace Clapn.Xamarin.Admob
                     }
                 }
 
-                _rewardedAd.UserId = options?.UserId;
-                _rewardedAd.CustomData = options?.CustomData;
-
-                _rewardedAd.LoadAd(options.AdUnit, requestBuilder.Build());
+                _rewardedAd.LoadAd(adUnit, requestBuilder.Build());
             }
             else
             {
@@ -157,10 +153,13 @@ namespace Clapn.Xamarin.Admob
             }
         }
 
-        public void ShowRewardedVideo()
+        public void ShowRewardedVideo(RewardedAdOptions options)
         {
             if (_rewardedAd != null && _rewardedAd.IsLoaded)
             {
+                _rewardedAd.UserId = options?.UserId;
+                _rewardedAd.CustomData = options?.CustomData;
+
                 _rewardedAd.Show();
             }
             else

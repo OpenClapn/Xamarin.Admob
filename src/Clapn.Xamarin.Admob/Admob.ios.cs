@@ -104,7 +104,7 @@ namespace Clapn.Xamarin.Admob
             return RewardBasedVideoAd.SharedInstance.IsReady;
         }
 
-        public void LoadRewardedVideo(RewardedAdOptions options)
+        public void LoadRewardedVideo(string adUnit)
         {
             if (RewardBasedVideoAd.SharedInstance.IsReady)
             {
@@ -112,13 +112,13 @@ namespace Clapn.Xamarin.Admob
                 return;
             }
 
-            RewardBasedVideoAd.SharedInstance.CustomRewardString = options?.CustomData;
+            
 
             var request = Request.GetDefaultRequest();
-            RewardBasedVideoAd.SharedInstance.LoadRequest(request, options.AdUnit);
+            RewardBasedVideoAd.SharedInstance.LoadRequest(request, adUnit);
         }
 
-        public void ShowRewardedVideo()
+        public void ShowRewardedVideo(RewardedAdOptions options)
         {
             if (RewardBasedVideoAd.SharedInstance.IsReady)
             {
@@ -128,7 +128,8 @@ namespace Clapn.Xamarin.Admob
                 {
                     vc = vc.PresentedViewController;
                 }
-
+                
+                RewardBasedVideoAd.SharedInstance.CustomRewardString = options?.CustomData;
                 RewardBasedVideoAd.SharedInstance.Present(vc);
             }
         }

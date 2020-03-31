@@ -15,7 +15,7 @@ namespace Clapn.Xamarin.Admob
         void ShowInterstitial();
 
         bool IsRewardedVideoLoaded();
-        void LoadRewardedVideo(RewardedAdOptions options);
-        void ShowRewardedVideo();
+        void LoadRewardedVideo(string adUnit);
+        void ShowRewardedVideo(RewardedAdOptions options);
     }
 }
