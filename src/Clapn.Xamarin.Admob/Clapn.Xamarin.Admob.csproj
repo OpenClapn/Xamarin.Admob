@@ -20,13 +20,14 @@
     <RepositoryUrl>https://github.com/OpenClapn/Xamarin.Admob</RepositoryUrl>
     <PackageTags>xamarin, ios, android, xamarin.forms, admob, reward, interstitial, google, google ads, ads</PackageTags>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes># 1.0.1
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes># 1.0.2
 
-- Set custom data on RewardedAd when calling ShowRewardedVideo
+- Use Xamarin.Google.iOS.SignIn version 4.4.0
 </PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -53,8 +54,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
-    <PackageReference Include="Xamarin.Google.iOS.SignIn" Version="5.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+    <PackageReference Include="Xamarin.Google.iOS.SignIn" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
