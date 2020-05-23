@@ -20,12 +20,12 @@
     <RepositoryUrl>https://github.com/OpenClapn/Xamarin.Admob</RepositoryUrl>
     <PackageTags>xamarin, ios, android, xamarin.forms, admob, reward, interstitial, google, google ads, ads</PackageTags>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes># 1.0.2
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
+    <PackageReleaseNotes># 1.0.4
 
-- Use Xamarin.Google.iOS.SignIn version 4.4.0
+- Remove Xamarin.Google.iOS.SignIn
 </PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
@@ -54,17 +54,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
-    <PackageReference Include="Xamarin.Google.iOS.SignIn" Version="4.4.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
-    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite" Version="71.1720.1" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite" Version="71.1720.2" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
     <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
-    <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="7.53.1" />
+    <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="7.57.0" />
+    <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="6.6.6" />
   </ItemGroup>
 
   <ItemGroup>
